@@ -3,6 +3,22 @@ body {
   background-color: #011F3F;
 }
 
+.start-container{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.start{
+
+  font-size: 3rem;
+  color: #FEF2BF;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #011F3F;
+  border: none;
+}
+
 #level-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
@@ -16,6 +32,8 @@ body {
   margin: auto;
 
 }
+
+.visible{ display: none; }
 
 .btn {
   margin: 25px;

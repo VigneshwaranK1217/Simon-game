@@ -16,12 +16,19 @@ function buttonAnimation(cls){
     setTimeout(() => { $("."+cls).removeClass("pressed"); }, 200);
 }
 
-// Keypress event listener to initialize the game
-document.addEventListener("keypress", (event) => {
-    if (cFlag){
-        computerSequence();
-        cFlag = false;
-    }
+// Start event listener to initialize the game
+document.querySelector(".start").addEventListener("click", (event) => {
+    setTimeout(() => {
+        if (cFlag){
+            document.querySelector("#level-title").classList.remove("visible");
+            document.querySelector(".container").classList.remove("visible");
+            document.querySelector(".start-container").classList.add("visible");
+            computerSequence();
+            cFlag = false;
+        }
+    }, 750);
+
+    
 });
 
 // Mouse click event to compare with computer sequence
@@ -66,13 +73,23 @@ function userSequence(event){
 
     if(computerArr[index] != userArr[index]){ // Compare the button clicked at each index
 
-        $("h1").text("Oops!, game Over press any key to restart");
+        $("h1").text("Oops!, game Over");
 
         $("body").addClass("game-over");
 
         setTimeout(() => { $("body").removeClass("game-over"); }, 200);
         var userAudio = new Audio("sounds/wrong.mp3");
         userAudio.play();
+
+        setTimeout(() => {
+            $(".start").text("Restart");
+
+            document.querySelector("#level-title").classList.add("visible");
+            document.querySelector(".container").classList.add("visible");
+            document.querySelector(".start-container").classList.remove("visible");
+        }, 1000);
+
+
         
         // If true reinitialize everything
         levelCount = 0;
